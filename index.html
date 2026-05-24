@@ -246,25 +246,28 @@
 
     .hero__photo-wrap {
       position: absolute;
-      right: -2%;
+      right: 0;
       bottom: 0;
-      width: min(62vw, 780px);
-      height: min(92vh, 900px);
+      width: min(68vw, 860px);
+      height: min(96vh, 960px);
       z-index: 1;
       pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
     }
 
     .hero__photo {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: 58% bottom;
+      object-fit: contain;
+      object-position: right bottom;
       -webkit-mask-image:
-        linear-gradient(to left, #000 72%, transparent 100%),
-        linear-gradient(to bottom, #000 88%, transparent 100%);
+        linear-gradient(to left, #000 58%, transparent 100%),
+        linear-gradient(to bottom, #000 92%, transparent 100%);
       mask-image:
-        linear-gradient(to left, #000 72%, transparent 100%),
-        linear-gradient(to bottom, #000 88%, transparent 100%);
+        linear-gradient(to left, #000 58%, transparent 100%),
+        linear-gradient(to bottom, #000 92%, transparent 100%);
       -webkit-mask-composite: source-in;
       mask-composite: intersect;
     }
@@ -273,8 +276,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, #080808 0%, transparent 28%),
-        linear-gradient(180deg, transparent 75%, rgba(8, 8, 8, 0.85) 100%);
+        linear-gradient(90deg, #080808 0%, transparent 22%),
+        linear-gradient(180deg, transparent 82%, rgba(8, 8, 8, 0.75) 100%);
       z-index: 2;
       pointer-events: none;
     }
@@ -981,17 +984,19 @@
         position: relative;
         right: auto;
         width: 100%;
-        height: 52vw;
-        min-height: 280px;
-        max-height: 420px;
-        margin-bottom: -2rem;
+        height: auto;
+        min-height: 360px;
+        max-height: none;
+        margin-bottom: -1.5rem;
         order: -1;
       }
 
       .hero__photo {
-        object-position: center 20%;
-        -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
-        mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+        object-fit: contain;
+        object-position: center bottom;
+        max-height: 72vw;
+        -webkit-mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
       }
 
       .hero__photo-fade {
@@ -1068,8 +1073,8 @@
         class="hero__photo"
         src="images/prashant-hero.png"
         alt="Prashant Gandhi speaking on stage with a microphone"
-        width="656"
-        height="630"
+        width="758"
+        height="672"
       />
       <div class="hero__photo-fade" aria-hidden="true"></div>
     </div>
