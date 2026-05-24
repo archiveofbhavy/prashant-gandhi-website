@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prashant Gandhi — Stress Reliever & Laughter Coach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --off-white: #f7f6f4;
+      --gray-100: #f0eeeb;
+      --gray-300: #c8c4be;
+      --gray-600: #5c5852;
+      --gray-800: #2a2826;
+      --saffron: #e88c3a;
+      --saffron-dark: #c97428;
+      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+      --sans: "DM Sans", system-ui, -apple-system, sans-serif;
+      --container: min(1200px, 92vw);
+      --section-pad: clamp(4rem, 8vw, 6.5rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--gray-800);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Utilities ── */
+    .accent-line {
+      width: 48px;
+      height: 4px;
+      background: var(--saffron);
+      margin: 1.25rem 0 1.5rem;
+    }
+
+    .accent-line--center { margin-left: auto; margin-right: auto; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--saffron);
+    }
+
+    .photo-placeholder {
+      background: linear-gradient(145deg, #1a1816 0%, #0d0c0b 55%, #1f1c19 100%);
+      border: 1px dashed rgba(232, 140, 58, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      padding: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.95rem 1.75rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn--primary {
+      background: var(--saffron);
+      color: var(--black);
+      border-color: var(--saffron);
+    }
+
+    .btn--primary:hover {
+      background: var(--saffron-dark);
+      border-color: var(--saffron-dark);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--black);
+      border-color: var(--black);
+    }
+
+    .btn--ghost:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn--ghost-light {
+      background: transparent;
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    .btn--ghost-light:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    h1, h2, h3, .heading-serif {
+      font-family: var(--serif);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(8, 8, 8, 0.55);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .navbar__inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 1.1rem 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .navbar__brand {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .navbar__links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      list-style: none;
+    }
+
+    .navbar__links a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+
+    .navbar__links a:hover,
+    .navbar__links a.is-active { color: var(--white); }
+
+    .navbar__links a.is-active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--saffron);
+    }
+
+    .navbar__toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    .navbar__toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 5px 0;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      background: #080808;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 7rem 0 0;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero__bg-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero__bg-layer--spotlight {
+      background:
+        radial-gradient(ellipse 85% 75% at 78% 48%, rgba(232, 140, 58, 0.22) 0%, rgba(90, 52, 18, 0.28) 22%, rgba(20, 12, 6, 0.15) 45%, transparent 68%),
+        radial-gradient(ellipse 55% 35% at 70% 98%, rgba(232, 140, 58, 0.14) 0%, transparent 62%);
+    }
+
+    .hero__bg-layer--vignette {
+      background:
+        linear-gradient(90deg, #080808 0%, rgba(8, 8, 8, 0.92) 38%, rgba(8, 8, 8, 0.35) 58%, transparent 72%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.55) 0%, transparent 18%, transparent 82%, rgba(8, 8, 8, 0.4) 100%);
+    }
+
+    .hero__photo-wrap {
+      position: absolute;
+      right: -2%;
+      bottom: 0;
+      width: min(62vw, 780px);
+      height: min(92vh, 900px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero__photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 58% bottom;
+      -webkit-mask-image:
+        linear-gradient(to left, #000 72%, transparent 100%),
+        linear-gradient(to bottom, #000 88%, transparent 100%);
+      mask-image:
+        linear-gradient(to left, #000 72%, transparent 100%),
+        linear-gradient(to bottom, #000 88%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+    }
+
+    .hero__photo-fade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, #080808 0%, transparent 28%),
+        linear-gradient(180deg, transparent 75%, rgba(8, 8, 8, 0.85) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero__grid {
+      position: relative;
+      z-index: 3;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 2rem 4vw 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      min-height: calc(100vh - 7rem);
+      width: 100%;
+    }
+
+    .hero__content {
+      padding-bottom: clamp(3rem, 8vw, 6rem);
+      max-width: 34rem;
+    }
+
+    .hero__eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__title {
+      font-size: clamp(2.75rem, 6.5vw, 4.75rem);
+      color: var(--white);
+      margin-bottom: 0;
+    }
+
+    .hero__title em {
+      font-style: italic;
+      color: var(--saffron);
+    }
+
+    .hero__content .accent-line {
+      margin: 1.1rem 0 0;
+    }
+
+    .hero__subtitle {
+      margin-top: 1.75rem;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 32rem;
+      line-height: 1.7;
+    }
+
+    .hero__cta { margin-top: 2.25rem; }
+
+    /* ── Featured strip ── */
+    .featured {
+      background: var(--black);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 2rem 0;
+    }
+
+    .featured__inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 4vw;
+      display: flex;
+      align-items: center;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      flex-wrap: wrap;
+    }
+
+    .featured__label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      white-space: nowrap;
+    }
+
+    .featured__logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: clamp(1rem, 3vw, 2.5rem);
+      flex: 1;
+    }
+
+    .featured__tile {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .featured__tile:hover {
+      color: var(--saffron);
+      border-bottom-color: var(--saffron);
+    }
+
+    /* ── Conducted / IRS highlight ── */
+    .conducted {
+      background: var(--white);
+    }
+
+    .conducted__irs {
+      background: var(--black);
+      border-bottom: 3px solid var(--saffron);
+      padding: 1.35rem 4vw;
+    }
+
+    .conducted__irs-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 3vw, 2rem);
+      flex-wrap: wrap;
+    }
+
+    .conducted__irs-badge {
+      flex-shrink: 0;
+      background: var(--saffron);
+      color: var(--black);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.1rem;
+    }
+
+    .conducted__irs-text {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: clamp(0.92rem, 1.6vw, 1.02rem);
+      line-height: 1.55;
+      max-width: 52rem;
+    }
+
+    .conducted__irs-text strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .conducted__body {
+      padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(2.5rem, 5vw, 3.5rem);
+    }
+
+    .conducted__header {
+      max-width: var(--container);
+      margin: 0 auto 2.25rem;
+      padding: 0 4vw;
+    }
+
+    .conducted__title {
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      color: var(--black);
+    }
+
+    .conducted__intro {
+      margin-top: 0.85rem;
+      color: var(--gray-600);
+      max-width: 38rem;
+      font-size: 0.98rem;
+    }
+
+    .conducted__feature {
+      max-width: var(--container);
+      margin: 0 auto 1.5rem;
+      padding: 0 4vw;
+    }
+
+    .conducted__feature img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+      box-shadow: 0 20px 50px rgba(10, 10, 10, 0.12);
+    }
+
+    .conducted__feature figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+    }
+
+    .conducted__gallery {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 4vw;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .conducted__thumb {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      background: var(--off-white);
+    }
+
+    .conducted__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .conducted__thumb.photo-placeholder {
+      font-size: 0.65rem;
+      padding: 0.75rem;
+      border-style: dashed;
+      border-color: rgba(232, 140, 58, 0.35);
+      background: linear-gradient(145deg, #f7f6f4 0%, #eceae6 100%);
+      color: var(--gray-600);
+    }
+
+    .conducted__thumb-label {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      text-align: center;
+    }
+
+    /* ── About ── */
+    .about {
+      background: var(--white);
+      padding: var(--section-pad) 0;
+    }
+
+    .about__grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 4vw;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 1fr;
+      gap: clamp(2rem, 4vw, 3.5rem);
+      align-items: start;
+    }
+
+    .about__heading {
+      font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+      color: var(--black);
+    }
+
+    .about__body {
+      color: var(--gray-600);
+      font-size: 0.98rem;
+      margin-bottom: 2rem;
+    }
+
+    .about__portrait-wrap {
+      position: relative;
+    }
+
+    .about__portrait {
+      width: 100%;
+      aspect-ratio: 452 / 632;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+
+    .about__ribbon {
+      position: absolute;
+      bottom: 12%;
+      left: -8%;
+      right: -8%;
+      background: var(--saffron);
+      color: var(--black);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.5rem;
+      transform: rotate(-4deg);
+      box-shadow: 0 8px 24px rgba(232, 140, 58, 0.35);
+      text-align: center;
+    }
+
+    .about__cert-heading {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
+
+    .about__cert-box {
+      border: 1px solid var(--gray-300);
+      padding: 1.75rem 1.5rem;
+      background: var(--off-white);
+    }
+
+    .about__cert-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .about__cert-list li {
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--gray-800);
+      padding-left: 1rem;
+      border-left: 3px solid var(--saffron);
+    }
+
+    /* ── Stats ── */
+    .stats {
+      background: var(--white);
+      padding: 0 0 var(--section-pad);
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .stats__grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: clamp(3rem, 6vw, 4.5rem) 4vw 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stats__number {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    .stats__accent {
+      width: 32px;
+      height: 3px;
+      background: var(--saffron);
+      margin: 1rem auto;
+    }
+
+    .stats__label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      line-height: 1.4;
+    }
+
+    /* ── Quote banner ── */
+    .quote-banner {
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: #121110;
+    }
+
+    .quote-banner__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(10, 10, 10, 0.68), rgba(10, 10, 10, 0.78)),
+        url("images/session-in-progress.png") center 35% / cover no-repeat;
+    }
+
+    .quote-banner__placeholder-label {
+      display: none;
+    }
+
+    .quote-banner__content {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 4vw;
+      max-width: 900px;
+    }
+
+    .quote-banner__main {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+
+    .quote-banner__sub {
+      margin-top: 1.25rem;
+      font-size: clamp(1rem, 2.2vw, 1.35rem);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.75);
+      font-style: italic;
+      font-family: var(--serif);
+    }
+
+    /* ── Sessions ── */
+    .sessions {
+      background: var(--white);
+      padding: var(--section-pad) 0;
+    }
+
+    .sessions__header {
+      max-width: var(--container);
+      margin: 0 auto 3rem;
+      padding: 0 4vw;
+    }
+
+    .sessions__title {
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      color: var(--black);
+    }
+
+    .sessions__intro {
+      margin-top: 1rem;
+      color: var(--gray-600);
+      max-width: 36rem;
+      font-size: 0.98rem;
+    }
+
+    .sessions__layout {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 4vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .sessions__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .session-card {
+      background: var(--off-white);
+      border: 1px solid var(--gray-100);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .session-card:hover {
+      border-color: var(--saffron);
+      box-shadow: 0 12px 40px rgba(232, 140, 58, 0.12);
+    }
+
+    .session-card__type {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron);
+    }
+
+    .session-card__name {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .session-card__detail {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      flex: 1;
+    }
+
+    .session-card .btn {
+      margin-top: 0.75rem;
+      align-self: flex-start;
+    }
+
+    .sessions__cta-panel {
+      background: var(--black);
+      color: var(--white);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 280px;
+      position: relative;
+    }
+
+    .sessions__cta-panel h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .sessions__cta-panel p {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.75rem;
+      line-height: 1.65;
+    }
+
+    .sessions__cta-photo {
+      margin-top: 1.5rem;
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+
+    .sessions__right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .stats__number--text {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      letter-spacing: 0.02em;
+      line-height: 1.25;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--black);
+      color: rgba(255, 255, 255, 0.7);
+      padding: clamp(3.5rem, 7vw, 5rem) 0 2rem;
+    }
+
+    .footer__grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 4vw 3rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1.2fr;
+      gap: 3rem;
+    }
+
+    .footer__brand {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer__tagline {
+      font-size: 0.95rem;
+      color: var(--saffron);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      font-family: var(--serif);
+    }
+
+    .footer__copy {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .footer__heading {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer__links a {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.65);
+      transition: color 0.2s;
+    }
+
+    .footer__links a:hover { color: var(--saffron); }
+
+    .footer__contact p {
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer__contact a {
+      color: rgba(255, 255, 255, 0.85);
+      transition: color 0.2s;
+    }
+
+    .footer__contact a:hover { color: var(--saffron); }
+
+    .footer__social {
+      display: flex;
+      gap: 0.85rem;
+      margin-top: 1.25rem;
+    }
+
+    .footer__social a {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .footer__social a:hover {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      color: var(--black);
+    }
+
+    .footer__social svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .footer__bar {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 1.5rem 4vw 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .about__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about__portrait-col {
+        grid-column: 1 / -1;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+
+      .stats__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+      }
+
+      .sessions__layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar__toggle { display: block; }
+
+      .navbar__links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--black);
+        padding: 1.5rem 4vw 2rem;
+        gap: 1.25rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .navbar__links.is-open { display: flex; }
+
+      .hero {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: auto;
+        padding-top: 5.5rem;
+      }
+
+      .hero__photo-wrap {
+        position: relative;
+        right: auto;
+        width: 100%;
+        height: 52vw;
+        min-height: 280px;
+        max-height: 420px;
+        margin-bottom: -2rem;
+        order: -1;
+      }
+
+      .hero__photo {
+        object-position: center 20%;
+        -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+      }
+
+      .hero__photo-fade {
+        background:
+          linear-gradient(180deg, transparent 55%, #080808 100%);
+      }
+
+      .hero__bg-layer--spotlight {
+        background:
+          radial-gradient(ellipse 90% 70% at 50% 65%, rgba(232, 140, 58, 0.2) 0%, rgba(90, 52, 18, 0.15) 30%, transparent 65%);
+      }
+
+      .hero__bg-layer--vignette {
+        background:
+          linear-gradient(180deg, rgba(8, 8, 8, 0.3) 0%, transparent 25%, rgba(8, 8, 8, 0.85) 85%);
+      }
+
+      .hero__grid { min-height: auto; order: 0; }
+
+      .hero__content { padding-bottom: 2.5rem; }
+
+      .featured__inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .conducted__gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .conducted__irs-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .about__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Navbar -->
+  <header class="navbar" id="top">
+    <div class="navbar__inner">
+      <a href="#top" class="navbar__brand">Prashant Gandhi</a>
+      <button class="navbar__toggle" aria-label="Open menu" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar__links" id="navLinks">
+        <li><a href="#home" class="is-active">Home</a></li>
+        <li><a href="#sessions">Sessions</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- 2. Hero -->
+  <section class="hero" id="home" aria-label="Introduction">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__bg-layer hero__bg-layer--spotlight"></div>
+      <div class="hero__bg-layer hero__bg-layer--vignette"></div>
+    </div>
+    <div class="hero__photo-wrap">
+      <img
+        class="hero__photo"
+        src="images/prashant-hero.png"
+        alt="Prashant Gandhi speaking on stage with a microphone"
+        width="656"
+        height="630"
+      />
+      <div class="hero__photo-fade" aria-hidden="true"></div>
+    </div>
+    <div class="hero__grid">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Retired IRS Assistant Commissioner · Laughter Coach · India</p>
+        <h1 class="hero__title">Stress Leaves.<br><em>Joy Stays.</em></h1>
+        <div class="accent-line"></div>
+        <p class="hero__subtitle">
+          Science-backed laughter techniques for instant stress relief — for individuals, teams &amp; institutions.
+        </p>
+        <div class="hero__cta">
+          <a href="#sessions" class="btn btn--primary">Book a Session →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Conducted sessions + IRS highlight -->
+  <section class="conducted" id="conducted" aria-label="Sessions in progress">
+    <div class="conducted__irs">
+      <div class="conducted__irs-inner">
+        <span class="conducted__irs-badge">Retired IRS Officer</span>
+        <p class="conducted__irs-text">
+          Prashant Gandhi served as <strong>Assistant Commissioner, Indian Revenue Service (IRS)</strong> — a distinguished government career now channelled into one mission: instant stress relief through innocent laughter.
+        </p>
+      </div>
+    </div>
+
+    <div class="conducted__body">
+      <header class="conducted__header">
+        <p class="section-label">Sessions in Action</p>
+        <h2 class="conducted__title">Where He Has Conducted Sessions</h2>
+        <div class="accent-line"></div>
+        <p class="conducted__intro">
+          From college campuses to government offices and community halls — real groups, real relief, in minutes.
+        </p>
+      </header>
+
+      <figure class="conducted__feature">
+        <img
+          src="images/session-in-progress.png"
+          alt="Prashant Gandhi leading a group laughter session with college students at a historic stepwell"
+          width="468"
+          height="332"
+        />
+        <figcaption>Group session in progress — college students, India</figcaption>
+      </figure>
+
+      <div class="conducted__gallery">
+        <div>
+          <div class="conducted__thumb photo-placeholder">[Photo: School session]</div>
+          <span class="conducted__thumb-label">Schools</span>
+        </div>
+        <div>
+          <div class="conducted__thumb photo-placeholder">[Photo: Govt office]</div>
+          <span class="conducted__thumb-label">Govt Offices</span>
+        </div>
+        <div>
+          <div class="conducted__thumb photo-placeholder">[Photo: College workshop]</div>
+          <span class="conducted__thumb-label">Colleges</span>
+        </div>
+        <div>
+          <div class="conducted__thumb photo-placeholder">[Photo: Community / Canada]</div>
+          <span class="conducted__thumb-label">Communities</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Featured / Credibility -->
+  <section class="featured" aria-label="Sessions conducted at">
+    <div class="featured__inner">
+      <span class="featured__label">Sessions conducted at:</span>
+      <div class="featured__logos">
+        <span class="featured__tile">Schools</span>
+        <span class="featured__tile">Colleges</span>
+        <span class="featured__tile">Govt Offices</span>
+        <span class="featured__tile">Communities</span>
+        <span class="featured__tile">Canada</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. About -->
+  <section class="about" id="about" aria-label="About Prashant Gandhi">
+    <div class="about__grid">
+      <div class="about__text">
+        <h2 class="about__heading">A Mission, Not a Service.</h2>
+        <div class="accent-line"></div>
+        <p class="about__body">
+          Prashant Gandhi is a retired IRS Assistant Commissioner who discovered the science of laughter as a tool for instant stress relief. Certified in Yoga, Ontology Science, and Mind-Body Practices, he has taken this mission to schools, colleges, government offices, and beyond.
+        </p>
+        <a href="#contact" class="btn btn--ghost">About Prashant →</a>
+      </div>
+
+      <div class="about__portrait-col">
+        <div class="about__portrait-wrap">
+          <img
+            class="about__portrait"
+            src="images/prashant-portrait.png"
+            alt="Prashant Gandhi seated outdoors, smiling in a red hat"
+            width="452"
+            height="632"
+          />
+          <div class="about__ribbon">Book a Session</div>
+        </div>
+      </div>
+
+      <div class="about__certs">
+        <h3 class="about__cert-heading">Certified in:</h3>
+        <div class="about__cert-box">
+          <ul class="about__cert-list">
+            <li>Yoga</li>
+            <li>Ontology Science</li>
+            <li>Mind-Body Practices</li>
+            <li>Assisting Landmark Worldwide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Numbers -->
+  <section class="stats" id="vision" aria-label="Impact and vision">
+    <div class="stats__grid">
+      <div class="stats__item">
+        <div class="stats__number">2,00,000+</div>
+        <div class="stats__accent"></div>
+        <div class="stats__label">People to Reach<br>(Vision)</div>
+      </div>
+      <div class="stats__item">
+        <div class="stats__number">100%</div>
+        <div class="stats__accent"></div>
+        <div class="stats__label">Money Back<br>Guarantee</div>
+      </div>
+      <div class="stats__item">
+        <div class="stats__number">3 Min</div>
+        <div class="stats__accent"></div>
+        <div class="stats__label">To Feel the<br>Difference</div>
+      </div>
+      <div class="stats__item">
+        <div class="stats__number stats__number--text">Schools + Colleges + Govt</div>
+        <div class="stats__accent"></div>
+        <div class="stats__label">Institutions Served</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Quote banner -->
+  <section class="quote-banner" aria-label="Innocent laughter quote">
+    <div class="quote-banner__bg" aria-hidden="true"></div>
+    <span class="quote-banner__placeholder-label">[Photo: Session in progress — chalkboard or group laughter]</span>
+    <div class="quote-banner__content">
+      <p class="quote-banner__main">Innocent Laughter</p>
+      <p class="quote-banner__sub">is the fastest path to a stress-free mind</p>
+    </div>
+  </section>
+
+  <!-- 7. Sessions -->
+  <section class="sessions" id="sessions" aria-label="Book a session">
+    <div class="sessions__header">
+      <p class="section-label">Work With Prashant</p>
+      <h2 class="sessions__title">Book a Session</h2>
+      <div class="accent-line"></div>
+      <p class="sessions__intro">
+        Whether you need a quick personal reset or a full institution-wide program, choose the format that fits you.
+      </p>
+    </div>
+
+    <div class="sessions__layout">
+      <div class="sessions__cards">
+        <article class="session-card">
+          <span class="session-card__type">Individual</span>
+          <h3 class="session-card__name">Zoom Session</h3>
+          <p class="session-card__detail">One-on-one stress relief via video call. Sessions from 3 to 30 minutes — feel the difference fast.</p>
+          <a href="#contact" class="btn btn--primary">Book Now →</a>
+        </article>
+
+        <article class="session-card">
+          <span class="session-card__type">Group</span>
+          <h3 class="session-card__name">Group Session</h3>
+          <p class="session-card__detail">Teams, families, and friend circles. Shared laughter multiplies relief and builds connection.</p>
+          <a href="#contact" class="btn btn--primary">Book Now →</a>
+        </article>
+
+        <article class="session-card">
+          <span class="session-card__type">Institution</span>
+          <h3 class="session-card__name">Corporate &amp; Institutional Booking</h3>
+          <p class="session-card__detail">Schools, colleges, government offices, and organizations. Custom programs for lasting cultural change.</p>
+          <a href="#contact" class="btn btn--primary">Book Now →</a>
+        </article>
+      </div>
+
+      <div class="sessions__right">
+        <div class="sessions__cta-panel">
+          <h3>Meet Prashant. Feel the shift in minutes.</h3>
+          <p>Retired IRS leader turned laughter coach — bringing science-backed joy to every room he enters.</p>
+          <a href="#contact" class="btn btn--ghost-light">Get in Touch →</a>
+        </div>
+        <img
+          class="sessions__cta-photo"
+          src="images/session-in-progress.png"
+          alt="Prashant Gandhi leading a group laughter session"
+          width="468"
+          height="332"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <p class="footer__brand">Prashant Gandhi</p>
+        <p class="footer__tagline">Relieve Stress. Spread Joy. Live Light.</p>
+        <p class="footer__copy">© 2026 Prashant Gandhi. All rights reserved.</p>
+      </div>
+
+      <div class="footer__col">
+        <p class="footer__heading">Quick Links</p>
+        <ul class="footer__links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#sessions">Sessions</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__contact">
+        <p class="footer__heading">Contact</p>
+        <p><a href="tel:+919408879324">9408879324</a></p>
+        <p><a href="https://instagram.com/innocent.laughter" target="_blank" rel="noopener">@innocent.laughter</a></p>
+        <p><a href="https://instagram.com/prashant_stress_reliever_coach" target="_blank" rel="noopener">@prashant_stress_reliever_coach</a></p>
+        <div class="footer__social">
+          <a href="https://instagram.com/innocent.laughter" target="_blank" rel="noopener" aria-label="Instagram — Innocent Laughter">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://instagram.com/prashant_stress_reliever_coach" target="_blank" rel="noopener" aria-label="Instagram — Prashant Stress Reliever Coach">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar">
+      Stress Reliever &amp; Laughter Coach · Nagpur, India
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("is-open");
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => navLinks.classList.remove("is-open"));
+    });
+
+    const sections = document.querySelectorAll("section[id], footer[id]");
+    const navItems = document.querySelectorAll(".navbar__links a");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navItems.forEach((a) => {
+              a.classList.toggle("is-active", a.getAttribute("href") === "#" + entry.target.id);
+            });
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+
+    document.querySelector("#home") && observer.observe(document.querySelector("#home"));
+    sections.forEach((s) => observer.observe(s));
+  </script>
+</body>
+</html>
